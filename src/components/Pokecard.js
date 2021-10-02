@@ -6,6 +6,7 @@ import axios from 'axios';
 function Pokecard({ url }) {
   const [pokemon, setPokemon] = useState({});
 
+  // wanneer de URL veranderd wordt er een nieuwe request gedaan, Deze URL komt uit de cardgenerator functie
   useEffect(() => {
     async function fetchData() {
       try {
@@ -18,6 +19,7 @@ function Pokecard({ url }) {
     fetchData();
   }, [url]);
 
+  // Wanneer undefined wordt er loading getoont in het card component
   if (!pokemon.data) {
     return <h1>loading...</h1>;
   }

@@ -6,9 +6,11 @@ import pokemonSVG from './assets/International_Pokémon_logo.svg';
 import axios from 'axios';
 
 function App() {
+  // twee states 1 voor het pokemon object, de ander voor het overkoepelende data object
   const [pokemons, setPokemons] = useState([]);
   const [data, setData] = useState({});
 
+  // functie voor het verkrigjen van de 20 pokemon, en het overkoepelende data object om gebruik te maken van next en previous
   async function fetchData(link) {
     try {
       const result = await axios.get(link);
@@ -19,6 +21,7 @@ function App() {
     }
   }
 
+  // Mount voor het verkrijgen van de 1e pagina.
   useEffect(() => {
     fetchData('https://pokeapi.co/api/v2/pokemon/');
     console.log('initiele render');
@@ -32,6 +35,7 @@ function App() {
     fetchData(data.data.previous);
   };
 
+  // extra functie voor het genereren van content. hiermee blijft de return statement clean
   const cardgenerator = () => {
     return (
       <div className='card-container'>
@@ -46,6 +50,8 @@ function App() {
       </div>
     );
   };
+
+  // wanneer er undefined is word er "loading" gegenereert
   if (!data.data) {
     return <h1>loading</h1>;
   }
