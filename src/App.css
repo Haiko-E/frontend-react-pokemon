@@ -1,0 +1,13 @@
+body {
+  background-color: #ffcb05;
+}
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.card-container {
+  display: flex;
+  margin: 10px;
+  flex-wrap: wrap;
+}
